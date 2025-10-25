@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BeanWay - Sign Up</title>
 
-  <!-- خط مميز لاسم BeanWay -->
+  <!-- الخطوط -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
 
   <style>
@@ -29,7 +29,7 @@
       position: relative;
     }
 
-    /* طبقة شفافة فوق الخلفية */
+    /* الطبقة الشفافة */
     body::before {
       content: "";
       position: absolute;
@@ -59,16 +59,26 @@
       font-size: 28px;
       font-family: "Playfair Display", serif;
       letter-spacing: 1px;
+      text-decoration: none;
+      transition: 0.3s;
     }
 
-    /* صندوق التسجيل */
+    header a {
+      text-decoration: none;
+    }
+
+    header h1:hover {
+      color: #2F7566;
+    }
+
+    /* الصندوق */
     .signup-box {
       position: relative;
       z-index: 2;
       background-color: #F4F1EC;
       width: 350px;
-      margin: 60px auto;
-      padding: 40px 50px;
+      margin: 70px auto;
+      padding: 35px 45px;
       border-radius: 10px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
     }
@@ -111,6 +121,23 @@
       background-color: #0E3D34;
     }
 
+    .login-link {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 13px;
+      color: #2F7566;
+    }
+
+    .login-link a {
+      color: #124D43;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .login-link a:hover {
+      text-decoration: underline;
+    }
+
     /* الفوتر */
     footer {
       background-color: #0E3D34;
@@ -140,22 +167,30 @@
 </head>
 <body>
 
+  <!-- الهيدر -->
   <header>
     <img src="Logo.png" alt="BeanWay Logo">
-    <h1>BeanWay</h1>
+    <a href="home.html"><h1>BeanWay</h1></a>
   </header>
 
+  <!-- صندوق التسجيل -->
   <div class="signup-box">
-    <h2>Sign Up</h2>
+    <h2>Create Account</h2>
     <form>
       <input type="text" placeholder="Full Name" required>
-      <input type="text" placeholder="Email" required>
+      <input type="email" placeholder="Email" required>
       <input type="password" placeholder="Password" required>
       <input type="password" placeholder="Confirm Password" required>
-      <button type="submit">Create Account</button>
+
+      <button type="submit">Sign Up</button>
     </form>
+
+    <div class="login-link">
+      Already have an account? <a href="login.html">Login here</a>
+    </div>
   </div>
 
+  <!-- الفوتر -->
   <footer>
     <div class="copyright">
       © 2025 BeanWay Coffee. All Rights Reserved.
