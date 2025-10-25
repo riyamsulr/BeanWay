@@ -94,6 +94,29 @@
       outline: none;
     }
 
+    /* مجموعة الراديو */
+    .role-select {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin: 15px 0 25px 0;
+    }
+
+    .role-select label {
+      color: #124D43;
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    input[type="radio"] {
+      accent-color: #124D43;
+      width: 17px;
+      height: 17px;
+    }
+
     button {
       width: 100%;
       padding: 12px;
@@ -167,11 +190,17 @@
     <form>
       <input type="text" placeholder="Email" required>
       <input type="password" placeholder="Password" required>
+
+      <div class="role-select">
+        <label><input type="radio" name="role" value="admin" required> Admin</label>
+        <label><input type="radio" name="role" value="user"> User</label>
+      </div>
+
       <button type="submit">Login</button>
     </form>
 
     <div class="signup-link">
-      Don’t have an account? <a href="signup.html">Sign Up</a>
+      New user? <a href="signup.html">Create an account</a>
     </div>
   </div>
 
