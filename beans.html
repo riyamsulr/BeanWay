@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BeanWay | Coffee Bean Types</title>
 
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins&display=swap" rel="stylesheet">
 
   <style>
@@ -24,29 +25,35 @@
 
     /* ===== HEADER ===== */
     header {
+      width: 100%;
       background-color: rgba(244, 241, 236, 0.95);
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      z-index: 10;
+      display: flex;
+      justify-content: center;
+      position: relative;
     }
 
     .nav-container {
+      max-width: 1100px;
+      width: 100%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 15px 20px;
+      padding: 15px 40px;
+    }
+
+    .nav-left {
+      flex: 1;
+      text-align: left;
     }
 
     .nav-left a {
       color: #124D43;
       text-decoration: none;
-      margin-right: 20px;
+      margin-right: 25px;
       font-family: "Playfair Display", serif;
-      font-weight: 600;
-      font-size: 16px;
+      font-size: 17px;
       transition: 0.3s;
     }
 
@@ -55,14 +62,14 @@
     }
 
     .nav-center {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      justify-content: center;
+      flex: 1;
+      text-align: center;
     }
 
     .nav-center img {
-      height: 50px;
+      height: 45px;
+      display: block;
+      margin: 0 auto 5px auto;
     }
 
     .nav-center a {
@@ -71,14 +78,23 @@
 
     .nav-center h1 {
       font-family: "Playfair Display", serif;
-      font-size: 27px;
+      font-size: 26px;
       color: #124D43;
-      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .nav-center h1:hover {
+      color: #2F7566;
+    }
+
+    .nav-right {
+      flex: 1;
+      text-align: right;
     }
 
     .nav-right img {
-      height: 36px;
-      width: 36px;
+      height: 32px;
+      width: 32px;
       object-fit: contain;
       cursor: pointer;
       transition: 0.3s;
@@ -129,13 +145,12 @@
       max-width: 1000px;
       margin: 60px auto;
       padding: 0 20px 60px 20px;
-      background-color: #F4F1EC;
     }
 
     .bean-section {
       display: flex;
       align-items: center;
-      gap: 40px;
+      gap: 30px;
       margin-bottom: 60px;
       background-color: #F4F1EC;
       color: #124D43;
@@ -149,8 +164,8 @@
     }
 
     .bean-section img {
-      width: 320px;
-      height: 320px;
+      width: 280px;
+      height: 280px;
       object-fit: cover;
       border-radius: 12px;
       border: 2px solid #124D43;
@@ -204,100 +219,24 @@
 <body>
 
   <!-- ===== HEADER ===== -->
- <!-- ===== HEADER ===== -->
-<header>
-  <style>
-    header {
-      background-color: rgba(244, 241, 236, 0.95);
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
+  <header>
+    <div class="nav-container">
+      <nav class="nav-left">
+        <a href="#">Coffee Beans</a>
+        <a href="#">Recipes</a>
+        <a href="#">Brewing</a>
+      </nav>
 
-    .nav-container {
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      align-items: center;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 15px 20px;
-    }
-
-    .nav-left {
-      text-align: left;
-    }
-
-    .nav-left a {
-      color: #124D43;
-      text-decoration: none;
-      margin-right: 20px;
-      font-family: "Playfair Display", serif;
-      font-weight: 600;
-      font-size: 16px;
-      transition: 0.3s;
-    }
-
-    .nav-left a:hover {
-      color: #2F7566;
-    }
-
-    .nav-center {
-      text-align: center;
-    }
-
-    .nav-center img {
-      height: 50px;
-      display: block;
-      margin: 0 auto 5px auto;
-    }
-
-    .nav-center h1 {
-      font-family: "Playfair Display", serif;
-      font-size: 27px;
-      color: #124D43;
-      margin: 0;
-    }
-
-    .nav-right {
-      text-align: right;
-    }
-
-    .nav-right img {
-      height: 36px;
-      width: 36px;
-      object-fit: contain;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .nav-right img:hover {
-      transform: scale(1.1);
-    }
-  </style>
-
-  <div class="nav-container">
-    <nav class="nav-left">
-      <a href="#">Coffee Beans</a>
-      <a href="#">Recipes</a>
-      <a href="#">Brewing</a>
-    </nav>
-
-    <div class="nav-center">
-      <a href="homepage.html">
+      <div class="nav-center">
         <img src="Logo.png" alt="BeanWay Logo">
-        <h1>BeanWay</h1>
-      </a>
-    </div>
+        <a href="homepage.html"><h1>BeanWay</h1></a>
+      </div>
 
-    <div class="nav-right">
-      <a href="login.html">
-        <img src="login-icon.png" alt="Login Icon">
-      </a>
+      <div class="nav-right">
+        <a href="login.html"><img src="login-icon.png" alt="Login Icon"></a>
+      </div>
     </div>
-  </div>
-</header>
-
+  </header>
 
   <!-- ===== INTRO ===== -->
   <section class="intro-section">
