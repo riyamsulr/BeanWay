@@ -59,6 +59,16 @@
       font-size: 28px;
       font-family: "Playfair Display", serif;
       letter-spacing: 1px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    header a {
+      text-decoration: none;
+    }
+
+    header h1:hover {
+      color: #2F7566;
     }
 
     /* الصندوق */
@@ -180,11 +190,13 @@
 </head>
 <body>
 
+  <!-- الهيدر -->
   <header>
     <img src="Logo.png" alt="BeanWay Logo">
-    <h1>BeanWay</h1>
+    <a href="homepage.html"><h1>BeanWay</h1></a>
   </header>
 
+  <!-- صندوق تسجيل الدخول -->
   <div class="login-box">
     <h2>Login</h2>
     <form>
@@ -204,6 +216,7 @@
     </div>
   </div>
 
+  <!-- الفوتر -->
   <footer>
     <div class="copyright">
       © 2025 BeanWay Coffee. All Rights Reserved.
