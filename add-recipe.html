@@ -9,7 +9,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
   <style>
-    /* ... (Your CSS is all correct, no changes needed) ... */
     :root{
       --bg:#F4F1EC; --text:#124D43; --text2:#2F7566; --brown:#4a3b28;
       --paper:#FFFFFF; --shadow:rgba(0,0,0,.12);
@@ -173,28 +172,34 @@
           </div>
           <div class="form-group">
             <label for="calories">Calories</label>
-            <input type="number" id="calories" placeholder="e.g., 200" required> </div>
+            <input type="number" id="calories" placeholder="e.g., 200" required>
+          </div>
         </div>
         
         <div class="form-group">
           <label for="taste">Taste Profile</label>
-          <input type="text" id="taste" name="taste" placeholder="e.g., Sweet, creamy, and balanced" required> </div>
+          <input type="text" id="taste" name="taste" placeholder="e.g., Sweet, creamy, and balanced" required>
+        </div>
 
         <div class="form-group">
           <label for="ingredients">Ingredients</label>
-          <textarea id="ingredients" name="ingredients" placeholder="One ingredient per line..." required></textarea> </div>
+          <textarea id="ingredients" name="ingredients" placeholder="One ingredient per line..." required></textarea>
+        </div>
         
         <div class="form-group">
           <label for="steps">Steps</label>
-          <textarea id="steps" name="steps" placeholder="One step per line..." required></textarea> </div>
+          <textarea id="steps" name="steps" placeholder="One step per line..." required></textarea>
+        </div>
         
         <div class="form-group">
           <label for="tip">Tip (Optional)</label>
-          <input type="text" id="tip" name="tip" placeholder="e.g., Use full-fat milk for a creamier texture."> </div>
+          <input type="text" id="tip" name="tip" placeholder="e.g., Use full-fat milk for a creamier texture.">
+        </div>
         
         <div class="form-group">
           <label for="image">Upload Image</label>
-          <input type="file" id="image" name="image" accept="image/*" required> </div>
+          <input type="file" id="image" name="image" accept="image/*" required>
+        </div>
         
         <button type="submit" class="submit-btn">Submit for Review</button>
       </form>
@@ -209,12 +214,18 @@
 
   <script>
     document.getElementById('add-form').addEventListener('submit', function(event) {
+      // Stop the form from submitting
+      event.preventDefault();
 
+      // Check if all required fields are valid
       if (event.target.checkValidity()) {
+        // If valid, show the alert
         alert('Recipe submitted for review!');
         
-        event.target.reset(); 
+        // Redirect to the "My Recipes" page
+        window.location.href = "profile.html";
       }
+      // If not valid, the browser will show its own validation messages
     });
   </script>
 
