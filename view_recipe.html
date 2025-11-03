@@ -12,6 +12,7 @@
     :root{
       --bg:#F4F1EC; --text:#124D43; --text2:#2F7566; --brown:#4a3b28;
       --paper:#FFFFFF; --shadow:rgba(0,0,0,.12);
+      --btn:#D2B48C; --red: #C0392B;
     }
     *{margin:0;padding:0;box-sizing:border-box;line-height:1.8}
     body{background:var(--bg);color:var(--text);font-family:"Poppins",sans-serif}
@@ -45,7 +46,7 @@
     /* ===== MAIN RECIPE ===== */
     main {
       max-width: 900px;
-      margin: 60px auto;
+      margin: 60px auto 40px auto; /* Reduced bottom margin */
       padding: 0 20px;
     }
     
@@ -110,6 +111,123 @@
       border-radius: 6px;
       font-size: 14px;
       color: var(--text);
+    }
+    
+    /* ===== NEW COMMENT SECTION ===== */
+    .comments-section {
+      max-width: 900px;
+      margin: 40px auto 60px auto;
+      padding: 0 20px;
+    }
+    
+    .comments-container {
+      background-color: var(--paper);
+      border-radius: 12px;
+      box-shadow: 0 4px 15px var(--shadow);
+      padding: 30px 40px;
+    }
+    
+    .comments-container h3 {
+      font-family: "Playfair Display", serif;
+      font-size: 22px;
+      color: var(--text);
+      border-bottom: 1px solid #E6D7C3;
+      padding-bottom: 5px;
+      margin-bottom: 20px;
+    }
+    
+    /* Comment Form */
+    #comment-form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+    
+    #comment-form textarea {
+      width: 100%;
+      min-height: 80px;
+      padding: 10px 12px;
+      border: 1px solid #2F7566;
+      border-radius: 6px;
+      font-size: 14px;
+      font-family: "Poppins", sans-serif;
+      resize: vertical;
+    }
+    
+    #comment-form button {
+      background-color: var(--btn);
+      color: var(--brown);
+      padding: 10px 15px;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+      align-self: flex-end; /* Button on the right */
+    }
+    #comment-form button:hover {
+      background-color: #C2A475;
+    }
+    
+    /* Comment List */
+    #comment-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    
+    .comment-item {
+      display: flex;
+      gap: 15px;
+      background-color: var(--bg);
+      padding: 15px;
+      border-radius: 8px;
+      border-left: 4px solid var(--btn);
+    }
+    
+    .comment-icon {
+      font-size: 20px;
+      color: var(--text2);
+      margin-top: 3px;
+    }
+    
+    .comment-content {
+      flex-grow: 1;
+    }
+    
+    .comment-content b { /* User's name */
+      color: var(--text);
+      font-size: 15px;
+    }
+    
+    .comment-content p { /* Comment text */
+      font-size: 14px;
+      color: #333;
+      line-height: 1.6;
+    }
+    
+    .delete-comment-btn {
+      background: none;
+      border: none;
+      color: var(--red);
+      font-size: 14px;
+      cursor: pointer;
+      transition: 0.3s;
+      align-self: flex-start;
+      
+      /* **** 1. HIDDEN BY DEFAULT **** */
+      display: none; 
+    }
+    
+    /* **** 2. ONLY SHOW BUTTON IF IT HAS 'is-user-comment' CLASS **** */
+    .delete-comment-btn.is-user-comment {
+      display: block;
+      opacity: 0.5;
+    }
+    
+    .comment-item:hover .delete-comment-btn.is-user-comment {
+      opacity: 1;
     }
 
 
@@ -186,11 +304,94 @@
     </div>
   </main>
 
+  <section class="comments-section">
+    <div class="comments-container">
+      <h3>Comments</h3>
+      
+      <form id="comment-form">
+        <textarea id="comment-text" placeholder="Write your comment..." required></textarea>
+        <button type="submit">Post Comment</button>
+      </form>
+      
+
+      <div id="comment-list">
+        
+        <div class="comment-item">
+          <i class="fa-solid fa-user-circle comment-icon"></i>
+          <div class="comment-content">
+            <b>Ali K.</b>
+            <p>Just made this, it was perfect! Thanks for the tip about fresh beans.</p>
+          </div>
+
+          <button class="delete-comment-btn" onclick="deleteComment(this)">
+            <i class="fa-solid fa-trash"></i>
+          </button>
+        </div>
+        
+
+        <div class="comment-item">
+          <i class="fa-solid fa-user-circle comment-icon"></i>
+          <div class="comment-content">
+            <b>Sarah</b>
+            <p>Simple and classic. My go-to morning coffee.</p>
+          </div>
+
+          <button class="delete-comment-btn" onclick="deleteComment(this)">
+            <i class="fa-solid fa-trash"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <footer>
     <div class="copyright">
       © 2025 BeanWay Coffee. All Rights Reserved.
     </div>
   </footer>
+
+  <script>
+    const commentForm = document.getElementById('comment-form');
+    const commentText = document.getElementById('comment-text');
+    const commentList = document.getElementById('comment-list');
+
+    commentForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      const text = commentText.value.trim();
+      
+      if (text !== "") {
+        addComment(text);
+        commentText.value = "";
+      }
+    });
+
+    function addComment(text) {
+      const newComment = document.createElement('div');
+      newComment.className = 'comment-item';
+      
+      newComment.innerHTML = `
+        <i class="fa-solid fa-user-circle comment-icon"></i>
+        <div class="comment-content">
+          <b>You</b> <!-- New comments are always from "You" -->
+          <p>${text.replace(/\n/g, '<br>')}</p> <!-- Preserve line breaks -->
+        </div>
+        
+        <!-- **** 4. NEW COMMENT BUTTON INCLUDES 'is-user-comment' CLASS **** -->
+        <button class="delete-comment-btn is-user-comment" onclick="deleteComment(this)">
+          <i class="fa-solid fa-trash"></i>
+        </button>
+      `;
+      
+      commentList.prepend(newComment);
+    }
+
+    function deleteComment(button) {
+      const commentItem = button.closest('.comment-item');
+      commentItem.remove();
+    }
+  </script>
 
 </body>
 </html>
