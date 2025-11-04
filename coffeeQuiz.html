@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>BeanWay | Coffee Mood Quiz</title>
 
-  <!-- Fonts & Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
@@ -287,10 +286,6 @@
     const backBtn = document.getElementById('back-btn');
     backBtn.addEventListener('click', ()=>{
       if(index === 0) return;
-      // go back one question
-      // We can't perfectly remove which option was clicked previously without storing history.
-      // To allow simple back functionality, we'll reload the quiz (safer) — but to be user-friendly,
-      // we store a history of the chosen types per question so we can decrement.
     });
 
     // Implement choice history to enable back functionality
@@ -347,10 +342,6 @@
       if(lastIndex >= 0 && choiceHistory[lastIndex]){
         const lastTypes = choiceHistory[lastIndex];
         lastTypes.forEach(t => { if(scores.hasOwnProperty(t)) scores[t] -= 1; });
-        // remove captured weather/experience if they were from that choice
-        // (simple approach: if the choice had data-weather/experience attributes, clear them)
-        // we stored weather/experience only when chosen, so if the undone choice included them, clear
-        // but we don't track per-choice meta deeply — acceptable tradeoff for this quiz.
       }
 
       // hide current question and show previous
