@@ -8,11 +8,11 @@ This project was designed and developed by the following team members:
 
 * **Lena Binfares**
     * Student ID: [Teammate's Student ID]
-    * GitHub: [@TeammateGitHubUsername](https://github.com/TeammateGitHubUsername)
+    * GitHub: [@leenakf](https://github.com/leenakf)
 
 * **Riyam Alrashed**
     * Student ID: [Teammate's Student ID]
-    * GitHub: [@TeammateGitHubUsername](https://github.com/TeammateGitHubUsername)
+    * GitHub: [@riyamsulr](https://github.com/riyamsulr)
  
 * **Aljudi Altorkistani**
     * Student ID: [Teammate's Student ID]
