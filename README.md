@@ -2,7 +2,7 @@
 
 **Course:** [IT320]  
 
-This repository contains all project files for BeanWay, a web application for a coffee recipe-sharing community.
+This repository contains all project files for BeanWay, a web application for a coffee recipe sharing community.
 
 ## 1. Project Overview
 
