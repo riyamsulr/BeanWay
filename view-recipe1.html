@@ -42,12 +42,20 @@
     .nav-center h1:hover{ color:var(--text2); }
     .nav-right{ flex:1; text-align:right; }
     .logout-btn {
-      background-color: var(--btn); color: var(--brown);
-      padding: 8px 14px; border: none; border-radius: 8px;
-      font-size: 14px; font-weight: 600; cursor: pointer; transition: 0.3s;
+      background-color: #124D43;
+      color: #F4F1EC;
+      text-decoration: none;
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-family: "Playfair Display", serif;
+      font-size: 16px;
+      transition: 0.3s;
+      margin-right: 40px;
     }
-    .logout-btn:hover { background-color: var(--btn-hover); }
 
+    .logout-btn:hover {
+      background-color: #2F7566;
+    }
     /* ===== MAIN RECIPE (Copied from view_recipe.html) ===== */
     main {
       max-width: 900px;
@@ -256,8 +264,9 @@
         <a href="profile.html">My Recipes</a> </nav>
       <div class="nav-center">
         <img src="images/Logo.png" alt="BeanWay Logo">
-        <a href="homepage.html"><h1>BeanWay</h1></a>
+        <a href="userpage.html"><h1>BeanWay</h1></a>
       </div>
+
       <div class="nav-right">
          <button class="logout-btn" onclick="location.href='homepage.html'">Logout</button>
       </div>
