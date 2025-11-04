@@ -326,7 +326,7 @@
   <section class="comments-section">
     <div class="comments-container">
       <h3>Comments</h3>
-      <form id="comment-form">
+      <form id="comment-form" action = "login.html">
         <textarea id="comment-text" placeholder="Write your comment..." required></textarea>
         <button type="submit">Post Comment</button>
       </form>
@@ -360,42 +360,6 @@
       © 2025 BeanWay Coffee. All Rights Reserved.
     </div>
   </footer>
-
-  <script>
-    const commentForm = document.getElementById('comment-form');
-    const commentText = document.getElementById('comment-text');
-    const commentList = document.getElementById('comment-list');
-
-    commentForm.addEventListener('submit', function(event) {
-      event.preventDefault(); 
-      const text = commentText.value.trim();
-      if (text !== "") {
-        addComment(text);
-        commentText.value = "";
-      }
-    });
-
-    function addComment(text) {
-      const newComment = document.createElement('div');
-      newComment.className = 'comment-item';
-      newComment.innerHTML = `
-        <i class="fa-solid fa-user-circle comment-icon"></i>
-        <div class="comment-content">
-          <b>You</b>
-          <p>${text.replace(/\n/g, '<br>')}</p>
-        </div>
-        <button class="delete-comment-btn is-user-comment" onclick="deleteComment(this)">
-          <i class="fa-solid fa-trash"></i>
-        </button>
-      `;
-      commentList.prepend(newComment);
-    }
-
-    function deleteComment(button) {
-      const commentItem = button.closest('.comment-item');
-      commentItem.remove();
-    }
-  </script>
 
 </body>
 </html>
