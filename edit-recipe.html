@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
   <style>
-    /* ... (All your CSS is correct) ... */
+    /* ... (Your CSS is all correct) ... */
     :root{
       --bg:#F4F1EC; --text:#124D43; --text2:#2F7566; --brown:#4a3b28;
       --paper:#FFFFFF; --shadow:rgba(0,0,0,.12);
@@ -140,7 +140,7 @@
     <div class="nav-container">
       <nav class="nav-left">
         <a href="beans.html">Coffee Beans</a>
-        <a href="recipes1.html">Recipes</a>
+        <a href="recipes.html">Recipes</a>
         <a href="Brewing.html">Brewing</a>
         <a href="profile.html">My Recipes</a>
       </nav>
@@ -205,9 +205,19 @@ Pinch of cocoa powder (optional)</textarea>
           <input type="text" id="tip" name="tip" value="Use freshly ground coffee beans for a rich flavor and creamy foam.">
         </div>
 
-        <div class="form-group">
-          <label for="tags">Tags</label>
-          <input type="text" id="tags" name="tags" placeholder="e.g., #espresso, #milk, #foam" value="#espresso, #milk, #foam" required>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="tag1">Tag 1</label>
+            <input type="text" id="tag1" name="tag1" placeholder="e.g., #espresso" value="#espresso" required>
+          </div>
+          <div class="form-group">
+            <label for="tag2">Tag 2 (Optional)</label>
+            <input type="text" id="tag2" name="tag2" placeholder="e.g., #milk" value="#milk">
+          </div>
+          <div class="form-group">
+            <label for="tag3">Tag 3 (Optional)</label>
+            <input type="text" id="tag3" name="tag3" placeholder="e.g., #foam" value="#foam">
+          </div>
         </div>
         
         <div class="form-group">
@@ -231,7 +241,8 @@ Pinch of cocoa powder (optional)</textarea>
       event.preventDefault();
       
       if (event.target.checkValidity()) {
-        alert('Changes saved! (Note: The page will reset if you reload)');
+        alert('Changes saved!'); 
+        window.location.href = "profile.html"; 
       }
     });
   </script>
