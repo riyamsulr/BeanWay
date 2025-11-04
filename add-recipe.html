@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
   <style>
+    /* ... (All your CSS is correct) ... */
     :root{
       --bg:#F4F1EC; --text:#124D43; --text2:#2F7566; --brown:#4a3b28;
       --paper:#FFFFFF; --shadow:rgba(0,0,0,.12);
@@ -197,6 +198,11 @@
         </div>
         
         <div class="form-group">
+          <label for="tags">Tags</label>
+          <input type="text" id="tags" name="tags" placeholder="e.g., #espresso, #milk, #foam" required>
+        </div>
+        
+        <div class="form-group">
           <label for="image">Upload Image</label>
           <input type="file" id="image" name="image" accept="image/*" required>
         </div>
@@ -214,18 +220,12 @@
 
   <script>
     document.getElementById('add-form').addEventListener('submit', function(event) {
-      // Stop the form from submitting
       event.preventDefault();
 
-      // Check if all required fields are valid
       if (event.target.checkValidity()) {
-        // If valid, show the alert
         alert('Recipe submitted for review!');
-        
-        // Redirect to the "My Recipes" page
         window.location.href = "profile.html";
       }
-      // If not valid, the browser will show its own validation messages
     });
   </script>
 
