@@ -7,13 +7,13 @@ This project was designed and developed by the following team members:
     * GitHub: [@raghadzworld](https://github.com/raghadzworld)
 
 * **Lena Binfares**
-    * Student ID: [Teammate's Student ID]
+    * Student ID: 444201074
     * GitHub: [@leenakf](https://github.com/leenakf)
 
 * **Riyam Alrashed**
-    * Student ID: [Teammate's Student ID]
+    * Student ID: 444201505
     * GitHub: [@riyamsulr](https://github.com/riyamsulr)
  
 * **Aljudi Altorkistani**
-    * Student ID: [Teammate's Student ID]
-    * GitHub: [@TeammateGitHubUsername](https://github.com/TeammateGitHubUsername)
+    * Student ID: 444203157
+    * GitHub: [@judychickadee](https://github.com/judychickadee)
