@@ -108,7 +108,7 @@ while ($row = $result->fetch_assoc()) {
                 </div>
                 <div class="actions">
                     <a href="edit-recipe.php?id=<?php echo $row['RecipeID']; ?>" class="btn btn-edit"><i class="fa-solid fa-pencil"></i> Edit</a>
-                    <a href="delete_recipe.php?id=<?php echo $row['RecipeID']; ?>" class="btn btn-delete" onclick="return confirm('Delete this recipe?');"><i class="fa-solid fa-trash"></i> Delete</a>
+                    <a href="delete-recipe.php?id=<?php echo $row['RecipeID']; ?>" class="btn btn-delete" onclick="return confirm('Delete this recipe?');"><i class="fa-solid fa-trash"></i> Delete</a>
                 </div>
             </div>
         <?php endforeach; ?>
@@ -128,7 +128,7 @@ while ($row = $result->fetch_assoc()) {
                 <div class="actions">
                     <a href="view-recipe.php?id=<?php echo $row['RecipeID']; ?>" class="btn btn-view"><i class="fa-solid fa-eye"></i> View</a>
                     <a href="edit-recipe.php?id=<?php echo $row['RecipeID']; ?>" class="btn btn-edit"><i class="fa-solid fa-pencil"></i> Edit</a>
-                    <a href="delete_recipe.php?id=<?php echo $row['RecipeID']; ?>" class="btn btn-delete" onclick="return confirm('Delete this recipe?');"><i class="fa-solid fa-trash"></i> Delete</a>
+                    <a href="delete-recipe.php?id=<?php echo $row['RecipeID']; ?>" class="btn btn-delete" onclick="return confirm('Delete this recipe?');"><i class="fa-solid fa-trash"></i> Delete</a>
                 </div>
             </div>
         <?php endforeach; ?>
@@ -147,7 +147,7 @@ while ($row = $result->fetch_assoc()) {
                 </div>
                 <div class="actions">
                     <a href="edit-recipe.php?id=<?php echo $row['RecipeID']; ?>" class="btn btn-edit"><i class="fa-solid fa-rotate-right"></i> Edit & Resubmit</a>
-                    <a href="delete_recipe.php?id=<?php echo $row['RecipeID']; ?>" class="btn btn-delete" onclick="return confirm('Delete this recipe?');"><i class="fa-solid fa-trash"></i> Delete</a>
+                    <a href="delete-recipe.php?id=<?php echo $row['RecipeID']; ?>" class="btn btn-delete" onclick="return confirm('Delete this recipe?');"><i class="fa-solid fa-trash"></i> Delete</a>
                 </div>
             </div>
         <?php endforeach; ?>
