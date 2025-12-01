@@ -140,7 +140,6 @@ CREATE TABLE `recipe` (
 
 INSERT INTO `recipe` (`RecipeID`, `Title`, `Time`, `Servings`, `Calories`, `Taste`, `Ingredients`, `Steps`, `Tip`, `Image`, `Status`, `AdminFeedback`, `UserID`) VALUES
 (1, 'Classic Cappuccino', 7, 1, 150, 'Rich, foamy, and balanced', '30 ml espresso\n100 ml steamed milk\nMilk foam topping\nPinch of cocoa powder (optional)', '1. Brew an espresso shot (30 ml) into a small cup.\n2. Steam milk to around 65°C using a frother or steamer.\n3. Pour steamed milk gently over espresso.\n4. Spoon the milk foam on top for a thick layer.\n5. Sprinkle cocoa powder or cinnamon if desired.', 'Use freshly ground coffee beans for a rich flavor and creamy foam.', 'images/cappuccino.jpg', 'approved', NULL, 1),
-(2, 'موكا', 4, 2, 3, 'حالي', 'حليب وسكر وكاكاو', 'اخفق القهوه مع الكاكاو ثم اضيف الحليبkkk', '', 'images/1764272281_mocha.jpg', 'rejected', 'hki', 2);
 
 -- --------------------------------------------------------
 
@@ -179,7 +178,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`UserID`, `Name`, `Email`, `Password`, `Role`) VALUES
-(1, 'Laila M.', 'laila@gmail.com', 'hashed_password_placeholder', 'user'),
+(1, 'Laila M.', 'laila@gmail.com', '$2y$10$aECb/EzLcrtC.1F55wMjLec/utzeObF7w2UFWV5DScgPm/eyTZ91e', 'user'),
 (2, 'leena', 'leena@gmail.com', '$2y$10$aECb/EzLcrtC.1F55wMjLec/utzeObF7w2UFWV5DScgPm/eyTZ91e', 'user'),
 (3, 'Admin', 'admin@beanway.com', '$2y$10$aECb/EzLcrtC.1F55wMjLec/utzeObF7w2UFWV5DScgPm/eyTZ91e', 'admin');
 

@@ -19,19 +19,59 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $ingredients = $_POST['ingredients'];
     $steps = $_POST['steps'];
     $tip = $_POST['tip'];
+    $tags_input = $_POST['tags']; // Get tags input
     $user_id = $_SESSION['user_id'];
     
-    // رفع الصورة
+    // Image Upload Logic
     $target_dir = "images/";
     $image_name = time() . "_" . basename($_FILES["image"]["name"]);
     $target_file = $target_dir . $image_name;
     
     if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+        // 1. Insert Recipe
         $stmt = $conn->prepare("INSERT INTO recipe (Title, Time, Servings, Calories, Taste, Ingredients, Steps, Tip, Image, Status, UserID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 'pending', ?)");
         $stmt->bind_param("siiisssssi", $title, $prep_time, $servings, $calories, $taste, $ingredients, $steps, $tip, $target_file, $user_id);
         
         if ($stmt->execute()) {
-            // بعد النجاح نرجعه لصفحة البروفايل
+            $new_recipe_id = $conn->insert_id; // Get the ID of the recipe just created
+
+            // 2. Process Tags
+            if (!empty($tags_input)) {
+                // Split tags by comma (e.g. "Cold, Sweet" -> ["Cold", "Sweet"])
+                $tags_array = explode(',', $tags_input);
+
+                foreach ($tags_array as $tag_name) {
+                    $tag_name = trim($tag_name); // Remove extra spaces
+                    if (empty($tag_name)) continue;
+
+                    // Check if tag already exists
+                    $check_tag = $conn->prepare("SELECT TagID FROM tag WHERE Name = ?");
+                    $check_tag->bind_param("s", $tag_name);
+                    $check_tag->execute();
+                    $result = $check_tag->get_result();
+
+                    if ($result->num_rows > 0) {
+                        // Tag exists, get ID
+                        $row = $result->fetch_assoc();
+                        $tag_id = $row['TagID'];
+                    } else {
+                        // Tag doesn't exist, create it
+                        $insert_tag = $conn->prepare("INSERT INTO tag (Name) VALUES (?)");
+                        $insert_tag->bind_param("s", $tag_name);
+                        $insert_tag->execute();
+                        $tag_id = $conn->insert_id;
+                        $insert_tag->close();
+                    }
+                    $check_tag->close();
+
+                    // Link Recipe and Tag in 'category' table
+                    $link_stmt = $conn->prepare("INSERT INTO category (RecipeID, TagID) VALUES (?, ?)");
+                    $link_stmt->bind_param("ii", $new_recipe_id, $tag_id);
+                    $link_stmt->execute();
+                    $link_stmt->close();
+                }
+            }
+
             header("Location: profile.php");
             exit();
         } else {
@@ -69,6 +109,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <label style="display:block; margin-bottom:5px; font-weight:bold;">Taste Profile (e.g. Sweet, Creamy):</label>
         <input type="text" name="taste" required style="width:100%; padding:10px; margin-bottom:15px; border:1px solid #ccc; border-radius:5px;">
+
+        <label style="display:block; margin-bottom:5px; font-weight:bold;">Tags (Separate with commas)(Optional):</label>
+        <input type="text" name="tags" placeholder="e.g. espresso, summer, iced" style="width:100%; padding:10px; margin-bottom:15px; border:1px solid #ccc; border-radius:5px;">
 
         <label style="display:block; margin-bottom:5px; font-weight:bold;">Ingredients (Line by line):</label>
         <textarea name="ingredients" rows="5" required style="width:100%; padding:10px; margin-bottom:15px; border:1px solid #ccc; border-radius:5px;"></textarea>

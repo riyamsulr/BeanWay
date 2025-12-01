@@ -2,29 +2,25 @@
 require 'db_connect.php'; 
 include 'header.php'; 
 
-// منطق البحث البسيط
+// Simple Search Logic
 $search = "";
 $sql = "SELECT * FROM recipe WHERE Status = 'approved'";
 
 if (isset($_GET['search']) && !empty($_GET['search'])) {
     $search = $conn->real_escape_string($_GET['search']);
-    // نبحث في العنوان أو المكونات أو الطعم
     $sql .= " AND (Title LIKE '%$search%' OR Ingredients LIKE '%$search%' OR Taste LIKE '%$search%')";
 }
 
-$sql .= " ORDER BY RecipeID DESC"; // الأحدث أولاً
+$sql .= " ORDER BY RecipeID DESC"; 
 $result = $conn->query($sql);
 ?>
 
 <style>
-    /* تنسيقات صفحة الوصفات */
-    
-    /* Intro */
+    /* Styling remains the same, removed for brevity, keeps existing CSS */
     .hero { text-align: center; padding: 50px 20px 20px; }
     .hero h2 { font-family: "Playfair Display", serif; font-size: 30px; color: #124D43; }
     .hero p { color: #6b5a46; }
 
-    /* Search Bar */
     .search {
       max-width: 900px; margin: 18px auto 30px; padding: 0 20px;
       display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
@@ -40,7 +36,6 @@ $result = $conn->query($sql);
     }
     .btn-search:hover { background-color: #2F7566; }
 
-    /* Grid Layout */
     main { max-width: 1100px; margin: 20px auto 60px; padding: 0 20px; }
     .grid {
       display: grid;
@@ -50,7 +45,6 @@ $result = $conn->query($sql);
     @media (max-width: 1000px) { .grid { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
 
-    /* Card Styling */
     .card {
       background: #FFFFFF;
       border: 1px solid #E6D7C3;
@@ -67,17 +61,15 @@ $result = $conn->query($sql);
       box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     }
 
-    /* Image Styling (Fixes the messy look) */
     .thumb {
       width: 100%;
-      height: 220px; /* ارتفاع ثابت للصورة */
+      height: 220px; 
       display: block;
-      object-fit: cover; /* قص الصورة لتناسب الإطار */
+      object-fit: cover; 
       background: #f1e6d6;
       border-bottom: 1px solid #E6D7C3;
     }
 
-    /* Content Styling */
     .content { padding: 15px 18px 18px; flex-grow: 1; display: flex; flex-direction: column; }
     
     .title {
@@ -95,7 +87,6 @@ $result = $conn->query($sql);
       margin-bottom: 5px;
     }
     
-    /* Tags styling */
     .actions { margin-top: auto; padding-top: 15px; display: flex; gap: 8px; flex-wrap: wrap; }
     .tag {
       font-size: 11px;
@@ -123,27 +114,41 @@ $result = $conn->query($sql);
       <?php
       if ($result && $result->num_rows > 0) {
           while($row = $result->fetch_assoc()) {
-              // نحتاج لرابط view-recipe مع رقم الوصفة
-              $link = "view-recipe.php?id=" . $row['RecipeID'];
+              $recipe_id = $row['RecipeID'];
+              $link = "view-recipe.php?id=" . $recipe_id;
               
               echo '<article class="card" onclick="location.href=\'' . $link . '\'">';
               
-              // الصورة
+              // Image
               echo '<img class="thumb" src="' . htmlspecialchars($row['Image']) . '" alt="' . htmlspecialchars($row['Title']) . '">';
               
               echo '<div class="content">';
               echo '<div class="title">' . htmlspecialchars($row['Title']) . '</div>';
               
-              // المعلومات (وقت، حصص، سعرات)
+              // Info
               echo '<div class="info-line">Prep: ' . $row['Time'] . ' min | Servings: ' . $row['Servings'] . '</div>';
               echo '<div class="info-line">Calories: ~' . $row['Calories'] . ' kcal</div>';
               echo '<div class="info-line" style="color:#2F7566;">Taste: ' . htmlspecialchars($row['Taste']) . '</div>';
               
-              // التاقات (سنقوم بإنشائها يدوياً بناء على الكلمات المفتاحية كشكل جمالي)
+              // Dynamic Tags Section
               echo '<div class="actions">';
-              echo '<span class="tag">#coffee</span>';
-              echo '<span class="tag">#beanway</span>';
-              echo '</div>';
+              
+              // Fetch tags for this specific recipe
+              $tags_sql = "SELECT t.Name FROM tag t 
+                           JOIN category c ON t.TagID = c.TagID 
+                           WHERE c.RecipeID = $recipe_id";
+              $tags_result = $conn->query($tags_sql);
+              
+              if($tags_result->num_rows > 0){
+                  while($tag_row = $tags_result->fetch_assoc()){
+                      echo '<span class="tag">#' . htmlspecialchars($tag_row['Name']) . '</span>';
+                  }
+              } else {
+                  // Optional: Default tag if none exist
+                  echo '<span class="tag">#beanway</span>';
+              }
+
+              echo '</div>'; // end actions
               
               echo '</div>'; // end content
               echo '</article>';
