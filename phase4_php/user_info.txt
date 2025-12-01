@@ -1,0 +1,13 @@
+admin:
+email: admin@beanway.com
+password: 1234
+
+users:
+
+Laila M.
+email: laila@gmail.com
+password: 1234
+
+leena
+email: leena@gmail.com
+password: 1234
