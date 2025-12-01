@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BeanWay | Coffee Bean Types</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== GENERAL ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+      line-height: 1.8;
+    }
+
+    body {
+      background-color: #F4F1EC;
+      color: #124D43;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      width: 100%;
+      background-color: rgba(244, 241, 236, 0.95);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      z-index: 10;
+      display: flex;
+      justify-content: center;
+      position: relative;
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+    }
+
+    .nav-left {
+      flex: 1.5;
+      text-align: left;
+    }
+
+    .nav-left a {
+      color: #124D43;
+      text-decoration: none;
+      margin-right: 25px;
+      font-family: "Playfair Display", serif;
+      font-size: 17px;
+      transition: 0.3s;
+    }
+
+    .nav-left a:hover {
+      color: #2F7566;
+    }
+
+    .nav-center {
+      flex: 1;
+      text-align: center;
+    }
+
+    .nav-center img {
+      height: 45px;
+      display: block;
+      margin: 0 auto 5px auto;
+    }
+
+    .nav-center a {
+      text-decoration: none;
+    }
+
+    .nav-center h1 {
+      font-family: "Playfair Display", serif;
+      font-size: 26px;
+      color: #124D43;
+      transition: 0.3s;
+    }
+
+    .nav-center h1:hover {
+      color: #2F7566;
+    }
+
+    .nav-right {
+      flex: 1;
+      text-align: right;
+    }
+
+    .logout-btn {
+      background-color: #124D43;
+      color: #F4F1EC;
+      text-decoration: none;
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-family: "Playfair Display", serif;
+      font-size: 16px;
+      transition: 0.3s;
+      margin-right: 40px;
+    }
+
+    .logout-btn:hover {
+      background-color: #2F7566;
+    }
+
+    /* ===== INTRO SECTION ===== */
+    .intro-section {
+      background: url("coffee.jpg") center/cover no-repeat;
+      position: relative;
+      color: #fff;
+      text-align: center;
+      padding: 110px 20px;
+    }
+
+    .intro-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(14, 61, 52, 0.6);
+      z-index: 0;
+    }
+
+    .intro-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .intro-content h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 32px;
+      margin-bottom: 20px;
+      color: #ffffff;
+    }
+
+    .intro-content p {
+      font-size: 16px;
+      color: #EDEDED;
+    }
+
+    /* ===== MAIN ===== */
+    main {
+      max-width: 1000px;
+      margin: 60px auto;
+      padding: 0 20px 60px 20px;
+    }
+
+    .bean-section {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      margin-bottom: 60px;
+      background-color: #F4F1EC;
+      color: #124D43;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .bean-section:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+
+    .bean-section img {
+      width: 280px;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 2px solid #124D43;
+    }
+
+    .bean-section h3 {
+      font-family: "Playfair Display", serif;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .bean-section ul {
+      margin-left: 20px;
+      list-style-type: "• ";
+    }
+
+    hr {
+      border: none;
+      height: 1px;
+      background-color: #124D43;
+      margin: 50px auto;
+      opacity: 0.3;
+      width: 80%;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background-color: #0E3D34;
+      color: #F4F1EC;
+      text-align: center;
+      padding: 20px 10px;
+      font-size: 14px;
+    }
+
+    footer::before {
+      content: "";
+      display: block;
+      width: 60%;
+      margin: 0 auto 10px auto;
+      border-top: 1px solid #FFFFFF;
+      opacity: 0.8;
+    }
+
+    .copyright {
+      font-size: 13px;
+      color: #EDEDED;
+      letter-spacing: 0.5px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div class="nav-container">
+      <!-- Left navigation -->
+      <nav class="nav-left">
+        <a href="beans1.html">Coffee Beans</a>
+        <a href="recipes1.html">Recipes</a>
+        <a href="brewing1.html">Brewing</a>
+        <a href="recipes1.html">My Recipes</a>
+      </nav>
+
+      <!-- Center logo -->
+      <div class="nav-center">
+        <img src="images/Logo.png" alt="BeanWay Logo">
+        <a href="userpage.html"><h1>BeanWay</h1></a>
+      </div>
+
+      <!-- Right logout button -->
+      <div class="nav-right">
+        <a href="homepage.html" class="logout-btn">Logout</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== INTRO ===== -->
+  <section class="intro-section">
+    <div class="intro-content">
+      <h2>Coffee Bean Types</h2>
+      <p>
+        Coffee is more than just a drink—it's a world of flavor, culture, and craftsmanship. <br>
+        While most people are familiar with "Arabica," there are four major coffee bean types that define the global coffee industry: <br><br>
+        <b>Arabica, Robusta, Liberica, and Excelsa.</b><br><br>
+        Each has its own story, aroma, caffeine level, and growing region—making every cup a unique journey.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main>
+
+    <div class="bean-section">
+      <img src="images/arabica.jpg" alt="Arabica Coffee">
+      <div>
+        <h3>1. Arabica Coffee</h3>
+        <p>
+          The most popular type in the world—representing 60–70% of global production.
+          Grown in high-altitude regions like Latin America and East Africa.
+        </p>
+        <ul>
+          <li>Shape: Oval and slightly elongated.</li>
+          <li>Taste: Smooth, sweet, and mildly acidic.</li>
+          <li>Caffeine: Lower compared to others.</li>
+          <li>Aroma: Fruity, floral, sometimes nutty or cocoa-like.</li>
+          <li>Best Brewing: V60, Chemex, French Press, AeroPress.</li>
+        </ul>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="bean-section">
+      <img src="images/robusta.jpg" alt="Robusta Coffee">
+      <div>
+        <h3>2. Robusta Coffee</h3>
+        <p>
+          The second most common variety, cultivated mainly in Africa and Southeast Asia.
+          Known for its bold flavor and high caffeine content—almost twice that of Arabica.
+        </p>
+        <ul>
+          <li>Shape: Rounder and smaller.</li>
+          <li>Taste: Strong, bitter, with earthy or chocolate notes.</li>
+          <li>Caffeine: Very high.</li>
+          <li>Best Brewing: Espresso, Cappuccino, Latte blends.</li>
+        </ul>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="bean-section">
+      <img src="images/liberica.jpg" alt="Liberica Coffee">
+      <div>
+        <h3>3. Liberica Coffee</h3>
+        <p>
+          A rare and distinctive coffee bean grown mostly in the Philippines and Malaysia.
+          It offers a floral, smoky flavor with a unique woody aftertaste.
+        </p>
+        <ul>
+          <li>Taste: Floral, fruity, slightly woody.</li>
+          <li>Caffeine: Moderate.</li>
+          <li>Aroma: Bold and complex.</li>
+          <li>Best Brewing: Manual Brew, Cold Brew, Medium Roast.</li>
+        </ul>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="bean-section">
+      <img src="images/excelsa.jpg" alt="Excelsa Coffee">
+      <div>
+        <h3>4. Excelsa Coffee</h3>
+        <p>
+          A unique variant of the Liberica family, Excelsa adds depth and fruitiness to coffee blends.
+          Mainly grown in Southeast Asia, especially Vietnam and the Philippines.
+        </p>
+        <ul>
+          <li>Shape: Small, teardrop-like beans.</li>
+          <li>Taste: Fruity, tangy, layered with both light and dark roast notes.</li>
+          <li>Caffeine: Low.</li>
+          <li>Best Brewing: Pour Over, Blend Roasts, Cold Brew.</li>
+        </ul>
+      </div>
+    </div>
+
+    <hr>
+
+    <div style="text-align:center;">
+      <h3>Conclusion</h3>
+      <p style="max-width:700px; margin:10px auto;">
+        Each type tells a different story—Arabica for balance, Robusta for strength, Liberica for rarity, and Excelsa for complexity.
+        <br><br>
+        At <b>BeanWay</b>, we invite you to explore them all and discover your perfect brew.
+      </p>
+    </div>
+
+  </main>
+
+
+  <footer>
+    <div class="copyright">
+      © 2025 BeanWay Coffee. All Rights Reserved.
+    </div>
+  </footer>
+
+</body>
+</html>

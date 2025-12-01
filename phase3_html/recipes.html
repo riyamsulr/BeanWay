@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BeanWay | Recipes</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;line-height:1.8}
+    body{
+      background:#F4F1EC;
+      color:#124D43;
+      font-family:"Poppins",sans-serif;
+    }
+
+    /* Header */
+    header{
+      width:100%;
+      background-color:rgba(244,241,236,0.95);
+      box-shadow:0 2px 10px rgba(0,0,0,.1);
+      z-index:10;
+      position:relative;
+      display:flex;
+      justify-content:center;
+    }
+    .nav-container{
+      max-width:1100px;
+      width:100%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:15px 40px;
+    }
+    .nav-left{flex:1;text-align:left}
+    .nav-left a{
+      color:#124D43;
+      text-decoration:none;
+      margin-right:25px;
+      font-family:"Playfair Display",serif;
+      font-size:17px;
+      transition:.3s;
+      white-space:nowrap;
+    }
+    .nav-left a:hover{color:#2F7566}
+    .nav-center{flex:1;text-align:center}
+    .nav-center img{height:45px; display:block; margin:0 auto 5px}
+    .nav-center a{text-decoration:none}
+    .nav-center h1{
+      font-family:"Playfair Display",serif;
+      font-size:26px;
+      color:#124D43;
+      transition:.3s;
+    }
+    .nav-center h1:hover{color:#2F7566}
+    .nav-right{flex:1;text-align:right}
+    .nav-right img{height:32px;width:32px;cursor:pointer;transition:.3s}
+    .nav-right img:hover{transform:scale(1.1)}
+
+    /* Intro */
+    .hero{text-align:center; padding:50px 20px 20px;}
+    .hero h2{font-family:"Playfair Display",serif; font-size:30px; color:#124D43;}
+    .hero p{color:#6b5a46;}
+
+    /* Search */
+    .search{
+      max-width:900px; margin:18px auto 8px; padding:0 20px;
+      display:flex; gap:10px; justify-content:center; flex-wrap:wrap;
+    }
+    .search input{
+      flex:1 1 320px; padding:10px 12px;
+      border:1px solid #2F7566; border-radius:8px; background:#fff;
+    }
+    .btn{
+     background-color:#124D43; color:#F4F1EC; padding:.8rem 1.2rem; border:0; border-radius:10px; font-weight:600; cursor:pointer;
+    }
+    .btn:hover{ background-color:#2F7566; }
+
+
+    /* Recipes grid */
+    main{ max-width:1100px; margin:20px auto 60px; padding:0 20px; }
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:22px;
+    }
+    @media (max-width:1000px){ .grid{ grid-template-columns:repeat(2,1fr);} }
+    @media (max-width:640px){ .grid{ grid-template-columns:1fr;} }
+
+    .card{
+      background:#FFFFFF;
+      border:1px solid #E6D7C3;
+      border-radius:12px;
+      box-shadow:0 4px 14px rgba(0,0,0,.12);
+      overflow:hidden;
+      transition:transform .25s ease, box-shadow .25s ease;
+      cursor:pointer;
+    }
+    .card:hover{
+      transform:translateY(-4px);
+      box-shadow:0 8px 20px rgba(0,0,0,.18);
+    }
+
+    /* Recipe images */
+    .thumb{
+      width:100%;
+      height:220px;
+      display:block;
+      object-fit:cover;
+      background:#f1e6d6;
+    }
+/* نفس تنسيق صفحة الادمن لمواصفات الوصفة */
+.info-line {
+  font-size: 13px;
+  color: #6b5a46;
+  font-weight: 500;
+  margin-bottom: 4px;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.3px;
+}
+.content div.title {
+  margin-bottom: 6px;
+}
+
+    /* Text box */
+    .content{ padding:12px 16px 14px; }
+    .title{
+      font-family:"Playfair Display",serif;
+      font-size:20px;
+      color:#124D43;
+      margin-bottom:4px;
+    }
+    .meta{ font-size:13px; color:#6b5a46; margin-bottom:10px; }
+    .actions{ display:flex; gap:10px; flex-wrap:wrap; }
+    .tag{
+      font-size:12px;
+      padding:6px 10px;
+      border-radius:999px;
+      background:#fff;
+      border:1px solid #D8C3A6;
+      color:#6b5a46;
+    }
+
+    /* Footer */
+    footer{
+      background-color:#0E3D34;
+      color:#F4F1EC;
+      text-align:center;
+      padding:20px 10px;
+      font-size:14px;
+    }
+    footer::before{
+      content:""; display:block; width:60%; margin:0 auto 10px; border-top:1px solid #fff; opacity:.8;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav-container">
+    <nav class="nav-left">
+      <a href="beans.html">Coffee Beans</a>
+      <a href="recipes.html">Recipes</a>
+      <a href="Brewing.html">Brewing</a>
+    </nav>
+    <div class="nav-center">
+      <img src="images/Logo.png" alt="BeanWay Logo">
+      <a href="homepage.html"><h1>BeanWay</h1></a>
+    </div>
+    <div class="nav-right">
+      <a href="login.html"><img src="images/login-icon.png" alt="Login"></a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <h2>Coffee Recipes</h2>
+  <p>From classics to creative twists — browse, brew, and enjoy.</p>
+</section>
+
+<div class="search">
+  <input type="text" placeholder="Search recipes... e.g., cappuccino">
+  <button class="btn"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
+</div>
+
+<main>
+    <div class="grid">
+      <!-- Cappuccino -->
+<article class="card" onclick="location.href='view-recipe.html'">
+  <img class="thumb" src="images/cappuccino.jpg" alt="Classic Cappuccino">
+  <div class="content">
+    <div class="title">Classic Cappuccino</div>
+
+    <div class="info-line">Prep: 7–9 min | Servings: 1 | Calories: ~150 kcal</div>
+    <div class="info-line">Taste: Rich, foamy, and balanced</div>
+
+    <div class="actions" style="margin-top:6px; display:flex; flex-wrap:wrap; gap:8px;">
+      <span class="tag">#espresso</span>
+      <span class="tag">#foam</span>
+      <span class="tag">#milk</span>
+    </div>
+  </div>
+</article>
+
+<!-- Iced Vanilla Latte -->
+<article class="card" onclick="location.href='view-recipe.html'">
+  <img class="thumb" src="images/vanillalatte.jpg" alt="Iced Vanilla Latte">
+  <div class="content">
+    <div class="title">Iced Vanilla Latte</div>
+
+    <div class="info-line">Prep: 5–6 min | Servings: 1 | Calories: ~180 kcal</div>
+    <div class="info-line">Taste: Sweet vanilla with cold smooth milk</div>
+
+    <div class="actions" style="margin-top:6px; display:flex; flex-wrap:wrap; gap:8px;">
+      <span class="tag">#iced</span>
+      <span class="tag">#vanilla</span>
+      <span class="tag">#latte</span>
+    </div>
+  </div>
+</article>
+
+<!-- Mocha Latte -->
+<article class="card" onclick="location.href='view-recipe.html'">
+  <img class="thumb" src="images/mocha.jpg" alt="Mocha Latte">
+  <div class="content">
+    <div class="title">Mocha Latte</div>
+
+    <div class="info-line">Prep: 8 min | Servings: 1 | Calories: ~220 kcal</div>
+    <div class="info-line">Taste: Rich chocolate & espresso</div>
+
+    <div class="actions" style="margin-top:6px; display:flex; flex-wrap:wrap; gap:8px;">
+      <span class="tag">#mocha</span>
+      <span class="tag">#chocolate</span>
+      <span class="tag">#latte</span>
+    </div>
+  </div>
+</article>
+
+<!-- Americano -->
+<article class="card" onclick="location.href='view-recipe.html'">
+  <img class="thumb" src="images/americano.jpg" alt="Americano">
+  <div class="content">
+    <div class="title">Americano</div>
+
+    <div class="info-line">Prep: 4–6 min | Servings: 1 | Calories: ~10 kcal</div>
+    <div class="info-line">Taste: Bold & smooth espresso</div>
+
+    <div class="actions" style="margin-top:6px; display:flex; flex-wrap:wrap; gap:8px;">
+      <span class="tag">#americano</span>
+      <span class="tag">#espresso</span>
+      <span class="tag">#bold</span>
+    </div>
+  </div>
+</article>
+
+    </div>
+  </main>
+
+<footer>
+  © 2025 BeanWay Coffee. All Rights Reserved.
+</footer>
+
+</body>
+</html>
+
